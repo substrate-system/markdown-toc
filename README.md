@@ -35,7 +35,7 @@ This is a fork of [jonschlinkert/markdown-toc](https://github.com/jonschlinkert/
 Install with [npm](https://www.npmjs.com/):
 
 ```sh
-$ npm install --save markdown-toc
+npm i -D @substrate-system/markdown-toc
 ```
 
 # Sponsors

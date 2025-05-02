@@ -42,6 +42,7 @@
     "Josh Duff (https://tehshrike.github.io)",
     "Matt Ellis (http://sticklebackplastic.com)",
     "Nicolas Morel (https://github.com/Marsup)",
+    "nichoth (https://nichoth.com)",
     "Rafael Steil (http://rafaelsteil.com)",
     "Richard Bradley (https://github.com/RichardBradley)",
     "Seth Vincent (https://sethvincent.com)",
@@ -50,9 +51,9 @@
     "(https://github.com/lu22do)",
     "Zeke Sikelianos (http://zeke.sikelianos.com)"
   ],
-  "repository": "bicycle-codes/markdown-toc",
+  "repository": "substrate-system/markdown-toc",
   "bugs": {
-    "url": "https://github.com/bicycle-codes/markdown-toc/issues"
+    "url": "https://github.com/substrate-system/markdown-toc/issues"
   },
   "license": "MIT",
   "files": [

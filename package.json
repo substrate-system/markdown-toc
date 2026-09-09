@@ -1,7 +1,7 @@
 {
   "name": "@substrate-system/markdown-toc",
   "description": "Generate a markdown TOC (table of contents) with Remarkable.",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

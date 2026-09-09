@@ -1,5 +1,3 @@
-// pattern: Functional Core
-
 import Remarkable from 'remarkable'
 import {
     generatePlugin,
@@ -29,29 +27,19 @@ export {
     stripHeading as strip,
     titleizeHeading as titleize,
 }
+export { renderBullets as bullets }
 
 export function toc (
-    markdown: string,
-    options: Readonly<TocOptions> = {},
-): TocResult {
+    markdown:string,
+    options:Readonly<TocOptions> = {},
+):TocResult {
     return generateToc(markdown, options)
 }
 
-const tocUtils: TocUtils = {
+export const utils:TocUtils = {
     Remarkable,
     getTitle,
-    slugify: slugifyHeading,
-    strip: stripHeading,
-    titleize: titleizeHeading,
-}
-
-export namespace toc {
-    export const bullets = renderBullets
-    export const insert = insertMarkdown
-    export const linkify = linkifyHeading
-    export const plugin = generatePlugin
-    export const slugify = slugifyHeading
-    export const strip = stripHeading
-    export const titleize = titleizeHeading
-    export const utils = tocUtils
+    slugify:slugifyHeading,
+    strip:stripHeading,
+    titleize:titleizeHeading,
 }

@@ -6,6 +6,7 @@
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "lib": ["ES2021"],
+    "types": ["node"],
     "allowJs": false,
     "skipLibCheck": true,
     "outDir": "dist",

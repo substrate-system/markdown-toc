@@ -1,19 +1,16 @@
 #!/usr/bin/env node
-
-// pattern: Imperative Shell
-
 import { readFileSync, writeFileSync } from 'node:fs'
 import { stdin, stderr, stdout } from 'node:process'
 import { insertMarkdown, toc } from './index.js'
 import type { TocOptions } from './types.js'
 
-type CliArgs = TocOptions & {
-    readonly _: Array<string>
-    readonly i?: boolean
-    readonly json?: boolean
+type CliArgs = TocOptions&{
+    readonly _:Array<string>
+    readonly i?:boolean
+    readonly json?:boolean
 }
 
-export async function main (): Promise<void> {
+export async function main ():Promise<void> {
     const args = parseArguments(process.argv.slice(2))
 
     if (args._.length !== 1) {
@@ -54,21 +51,21 @@ export async function main (): Promise<void> {
     }
 }
 
-function parseArguments (argumentsList: ReadonlyArray<string>): CliArgs {
-    const values: {
-        _: Array<string>
-        i?: boolean
-        json?: boolean
-        append?: string
-        bullets?: Array<string>
-        indent?: string
-        maxdepth?: number
-        firsth1?: boolean
-        stripHeadingTags?: boolean
+function parseArguments (argumentsList:ReadonlyArray<string>):CliArgs {
+    const values:{
+        _:Array<string>
+        i?:boolean
+        json?:boolean
+        append?:string
+        bullets?:Array<string>
+        indent?:string
+        maxdepth?:number
+        firsth1?:boolean
+        stripHeadingTags?:boolean
     } = {
-        _: [],
-        firsth1: true,
-        stripHeadingTags: true,
+        _:[],
+        firsth1:true,
+        stripHeadingTags:true,
     }
 
     for (let index = 0; index < argumentsList.length; index++) {
@@ -104,16 +101,16 @@ function parseArguments (argumentsList: ReadonlyArray<string>): CliArgs {
     return values
 }
 
-function readStdin (): Promise<string> {
+function readStdin ():Promise<string> {
     return new Promise((resolve, reject) => {
-        const chunks: Array<Buffer> = []
+        const chunks:Array<Buffer> = []
         stdin.on('data', chunk => chunks.push(Buffer.from(chunk)))
         stdin.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')))
         stdin.on('error', reject)
     })
 }
 
-function usage (): string {
+function usage ():string {
     return [
         'Usage: markdown-toc [options] <input>',
         '',

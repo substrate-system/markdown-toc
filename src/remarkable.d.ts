@@ -5,12 +5,12 @@ declare module 'remarkable' {
     } from './types.js'
 
     export default class Remarkable {
-        readonly renderer: RemarkableInstance['renderer']
+        readonly renderer:RemarkableInstance['renderer']
 
-        constructor(...options: ReadonlyArray<unknown>)
+        constructor (...options:ReadonlyArray<unknown>)
 
-        use(plugin: RemarkablePlugin): this
+        use (plugin:RemarkablePlugin):this
 
-        render(markdown: string, environment?: unknown): unknown
+        render (markdown:string, environment?:unknown):unknown
     }
 }

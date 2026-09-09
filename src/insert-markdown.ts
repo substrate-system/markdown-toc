@@ -1,20 +1,18 @@
-// pattern: Functional Core
-
 import matter from 'gray-matter'
 import { generateToc } from './markdown-toc.js'
 import type { TocOptions } from './types.js'
 
 export function insertMarkdown (
-    markdown: string,
-    options: Readonly<TocOptions> = {},
-): string {
+    markdown:string,
+    options:Readonly<TocOptions> = {},
+):string {
     const regex = options.regex ?? /(?:<!-- toc(?:\s*stop)? -->)/g
-    const open = typeof options.open === 'string'
-        ? options.open
-        : '<!-- toc -->\n\n'
-    const close = typeof options.close === 'string'
-        ? options.close
-        : '<!-- tocstop -->'
+    const open = typeof options.open === 'string' ?
+        options.open :
+        '<!-- toc -->\n\n'
+    const close = typeof options.close === 'string' ?
+        options.close :
+        '<!-- tocstop -->'
     const trailingNewlines = /\n+$/.exec(markdown)?.[0] ?? ''
     const hasMatter = /^---/.test(markdown)
     const parsed = hasMatter ? matter(markdown) : null

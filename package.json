@@ -2,120 +2,49 @@
   "name": "@substrate-system/markdown-toc",
   "description": "Generate a markdown TOC (table of contents) with Remarkable.",
   "version": "1.3.5",
-  "homepage": "https://github.com/jonschlinkert/markdown-toc",
-  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "./dist/*"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": [
+      "./dist/*.js",
+      "./dist/*"
+    ]
+  },
+  "bin": {
+    "markdown-toc": "./dist/cli.js"
+  },
   "scripts": {
-    "version": "npm run changelog && git add CHANGELOG.md",
-    "changelog": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:'",
-    "postversion": "git push --follow-tags && npm publish --access=public",
-    "test": "mocha"
+    "lint": "eslint \"./**/*.{ts,js}\"",
+    "test": "esbuild test/index.ts --platform=node --format=esm --keep-names --bundle --external:gray-matter --external:remarkable --external:diacritics-map | node --input-type=module | tap-spec",
+    "build-esm": "esbuild src/index.ts src/cli.ts src/markdown-toc.ts src/insert-markdown.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-esm",
+    "preversion": "npm run lint",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "concat-stream": "^1.5.2",
+    "@types/remarkable": "^2.0.8",
     "diacritics-map": "^0.1.0",
     "gray-matter": "^4.0.3",
-    "lazy-cache": "^2.0.2",
-    "list-item": "^1.1.1",
-    "markdown-link": "^0.1.1",
-    "minimist": "^1.2.8",
-    "mixin-deep": "^1.1.3",
-    "object.pick": "^1.3.0",
-    "remarkable": "^1.7.1",
-    "repeat-string": "^1.6.1",
-    "strip-color": "^0.1.0"
+    "remarkable": "^1.7.1"
   },
   "devDependencies": {
-    "auto-changelog": "^2.5.0",
-    "mocha": "^10.2.0"
-  },
-  "contributors": [
-    "=^._.^= (http://maxogden.com)",
-    "Andrés (http://angrykoala.github.io)",
-    "Benjamin Schmitz (https://github.com/Vortex375)",
-    "Christian Raunitschka (raunitschka.de)",
-    "Daniel Chen (http://chendaniely.github.io)",
-    "Daniel Mietchen (http://about.me/daniel.mietchen)",
-    "David Mohl (https://dvcrn.github.io)",
-    "Federico Soave (https://github.com/Feder1co5oave)",
-    "Gary Green (https://github.com/garygreen)",
-    "Jon Schlinkert (http://twitter.com/jonschlinkert)",
-    "Josh Duff (https://tehshrike.github.io)",
-    "Matt Ellis (http://sticklebackplastic.com)",
-    "Nicolas Morel (https://github.com/Marsup)",
-    "nichoth (https://nichoth.com)",
-    "Rafael Steil (http://rafaelsteil.com)",
-    "Richard Bradley (https://github.com/RichardBradley)",
-    "Seth Vincent (https://sethvincent.com)",
-    "Stefan Walther (http://qliksite.io)",
-    "Tao Wang (https://github.com/twang2218)",
-    "(https://github.com/lu22do)",
-    "Zeke Sikelianos (http://zeke.sikelianos.com)"
-  ],
-  "repository": "substrate-system/markdown-toc",
-  "bugs": {
-    "url": "https://github.com/substrate-system/markdown-toc/issues"
+    "@substrate-system/tapzero": "^0.10.16",
+    "@types/node": "^24.0.3",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.10.0",
+    "newneostandard": "^0.14.3",
+    "tap-spec": "^5.0.0",
+    "typescript": "^7.0.2"
   },
   "license": "MIT",
-  "files": [
-    "cli.js",
-    "index.js",
-    "lib"
-  ],
-  "main": "index.js",
-  "bin": {
-    "markdown-toc": "cli.js"
-  },
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "substrate-system/markdown-toc",
   "engines": {
-    "node": ">=0.10.0"
-  },
-  "keywords": [
-    "anchor",
-    "API documentation",
-    "code documentation",
-    "commonmark",
-    "content navigation",
-    "content organization",
-    "developer tools",
-    "docs",
-    "document structure",
-    "document",
-    "documentation tool",
-    "documentation",
-    "glossary",
-    "heading",
-    "headings",
-    "index",
-    "javascript",
-    "links",
-    "markdown parser",
-    "markdown tools",
-    "Markdown-based",
-    "markdown-toc",
-    "markdown",
-    "markup language",
-    "md files",
-    "md parser",
-    "md-toc",
-    "md",
-    "node.js",
-    "npm",
-    "open-source",
-    "outline",
-    "package.json",
-    "plugin",
-    "README tool",
-    "readme",
-    "reference",
-    "remarkable",
-    "remarkableplugin",
-    "render",
-    "renderer",
-    "structure",
-    "table of contents",
-    "table-of-contents",
-    "table",
-    "toc-generator",
-    "toc",
-    "write"
-  ]
+    "node": ">=18"
+  }
 }

@@ -11,6 +11,11 @@ coverage
 # npm
 node_modules
 npm-debug.log
+dist
+bundle.js
+src/*.js
+test/*.js*
+test/index.d.ts*
 
 # yarn
 yarn.lock
